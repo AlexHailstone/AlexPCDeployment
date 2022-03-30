@@ -1,4 +1,12 @@
-#Importing Bootstrapped PowerShell code:
+[CmdletBinding()]
+param (
+    [Parameter(Mandatory = $false)][switch]$RemoveBloatware,
+    [Parameter(Mandatory = $false)][switch]$InstallSoftware,
+    [Parameter(Mandatory = $false)][switch]$InstallCustomSoftware,
+    [Parameter(Mandatory = $false)][switch]$SetupPrefs,
+    [Parameter(Mandatory = $false)][switch]$All
+)
+
 $logPath = $null
 $dataPath = $null
 $errorPath = $null
@@ -7,7 +15,7 @@ $scriptTitle = $null
 $powershellTargetVersion = 5
 $powershellOutdated = $false
 $powershellUpgraded = $false
-$provalScriptBasePath = "https://file.provaltech.com/repo/script"
+#$provalScriptBasePath = "https://file.provaltech.com/repo/script"
 $bootstrapLoaded = $true
 $isElevated = $false
 
@@ -257,14 +265,8 @@ function Update-PowerShell {
 .NOTES
     Dan's Laptop setup, preferences, and more 
 #>
-[CmdletBinding()]
-param (
-    [Parameter(Mandatory = $false)][switch]$RemoveBloatware,
-    [Parameter(Mandatory = $false)][switch]$InstallSoftware,
-    [Parameter(Mandatory = $false)][switch]$InstallCustomSoftware,
-    [Parameter(Mandatory = $false)][switch]$SetupPrefs,
-    [Parameter(Mandatory = $false)][switch]$All
-)
+
+
 ### Bootstrap ###
 #The bootstrap loads Logging, Chocolatey, environment paths, common variables, powershell updates. It should be included on ALL ProVal powershell scripts developed.
 if (-not $bootstrapLoaded) {
