@@ -319,13 +319,18 @@ function Invoke-BloatwareCleanup {
 }
 function Install-GeneralSoftware {
     Write-Log -Text 'General software installation selected. Processing...' -Type DATA
-    choco install `
-        googlechrome `
-        greenshot `
-        unity `
-        vscode `
-        steam-client `
-        $env:path += 'C:\Program Files\Git\cmd'
+    winget install `
+    Valve.Steam `
+    Microsoft.VisualStudioCode `
+    Google.Chrome `
+    Greenshot.Greenshot `
+    # choco install `
+    #     googlechrome `
+    #     greenshot `
+    #     unity `
+    #     vscode `
+    #     steam-client `
+    #     $env:path += 'C:\Program Files\Git\cmd'
     Write-Log -Text 'General Software Installation complete. Git env:path updated for the session.' -Type DATA
 }
 function Install-CustomSoftware {
@@ -356,8 +361,8 @@ function Set-UserPrefs {
     Set-ExplorerAdvancedOption -Name 'ShowTaskViewButton' -Value 0
     Write-Log -Text 'Disabling Taskbar Cortana Button' -Type LOG
     Set-ExplorerAdvancedOption -Name 'ShowCortanaButton' -Value 0
-    Write-Log -Text 'Setting Taskbar to "Small Icons"' -Type LOG
-    Set-ExplorerAdvancedOption -Name 'TaskbarSmallIcons' -Value 1
+    #Write-Log -Text 'Setting Taskbar to "Small Icons"' -Type LOG
+    #Set-ExplorerAdvancedOption -Name 'TaskbarSmallIcons' -Value 1
     #Write-Log -Text 'Enabling Explorer: View Hidden Items' -Type LOG
     #Set-ExplorerAdvancedOption -Name 'Hidden' -Value 1
     #Write-Log -Text 'Disabling Explorer: Hide extensions for known file types' -Type LOG
