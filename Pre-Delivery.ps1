@@ -321,9 +321,10 @@ function Install-GeneralSoftware {
     Write-Log -Text 'General software installation selected. Processing...' -Type DATA
     choco install `
         googlechrome `
-        adobereader `
-        zoom `
         greenshot `
+        unity `
+        vscode `
+        steam-client `
         $env:path += 'C:\Program Files\Git\cmd'
     Write-Log -Text 'General Software Installation complete. Git env:path updated for the session.' -Type DATA
 }
