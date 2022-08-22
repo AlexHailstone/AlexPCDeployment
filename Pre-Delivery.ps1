@@ -331,6 +331,19 @@ function Install-GeneralSoftware {
     #     vscode `
     #     steam-client `
     #     $env:path += 'C:\Program Files\Git\cmd'
+    Add-Type -TypeDefinition @'
+using System.Runtime.InteropServices;
+public class MouseSonar {
+    public const uint SPI_SETMOUSESONAR = 0x101D;
+    public const uint SPIF_UPDATEINIFILE = 0x01;
+    public const uint SPIF_SENDCHANGE = 0x02;
+    [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Auto)]
+    private static extern int SystemParametersInfo (uint uAction, uint uParam, bool lpvParam, uint fuWinIni);
+    public static void SetSonar (bool Enable) {
+        SystemParametersInfo(SPI_SETMOUSESONAR, 0, Enable, SPIF_UPDATEINIFILE | SPIF_SENDCHANGE);
+    }
+}
+'@
     Write-Log -Text 'General Software Installation complete. Git env:path updated for the session.' -Type DATA
 }
 function Install-CustomSoftware {
