@@ -344,6 +344,8 @@ public class MouseSonar {
     }
 }
 '@
+
+[MouseSonar]::SetSonar($true)
     Write-Log -Text 'General Software Installation complete. Git env:path updated for the session.' -Type DATA
 }
 function Install-CustomSoftware {
